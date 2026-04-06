@@ -1,0 +1,7 @@
+{
+    "config": {
+        "version": "1.0.0",
+        "frameRate": 60,
+        "debugModel": true
+    }
+}

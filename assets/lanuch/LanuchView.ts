@@ -9,6 +9,7 @@ export class LanuchView extends Component {
 
     public lanuchMain() {
         assetManager.loadBundle("scripts", (err, bundle) => {
+            console.log("scripts bundle load succ")
             const shellObj = director.getScene().getChildByName("Shell");
             shellObj.addComponent("Main");
         })

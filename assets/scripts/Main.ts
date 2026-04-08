@@ -1,4 +1,10 @@
 import { _decorator, Component, director, game, Node } from 'cc';
+import { SystemConfig } from '../lanuch/SystemConfig';
+import { UILayout } from './core/ui/UILayout';
+import { Facade } from './core/puremvc/Puremvc';
+import { AppFacade } from './modules/AppFacade';
+import { PreloadingProxy } from './modules/preloading/PreloadingProxy';
+import { AppProxyName } from './modules/AppProxyName';
 const { ccclass, property } = _decorator;
 
 @ccclass('Main')
@@ -10,14 +16,14 @@ export class Main extends Component {
     private _init(): void {
         if (this._isInit == false) {
             this._isInit = true;
-            
-            const shellObj = director.getScene().getChildByName("Shell");
-            let lanuchComponent = shellObj.getComponent("Lanuch");
-            if (lanuchComponent) {
-                lanuchComponent.destroy();
-            }
 
-            game.frameRate = 60;        
+            game.frameRate = SystemConfig.FrameRate;    
+            
+            UILayout.Init();
+            AppFacade.Ins().init();
+
+            let preloadingProxy = Facade.getInstance().retrieveProxy(AppProxyName.Preloading) as PreloadingProxy;
+            preloadingProxy.start();
         } 
     }
 

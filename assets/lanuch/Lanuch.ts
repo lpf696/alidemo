@@ -24,7 +24,7 @@ export class Lanuch extends Component {
     private _showLoadingView()
     { 
         assetManager.loadBundle("plugins", (err, bundle) => {
-            console.log("plugin bundle load succ!",bundle);
+            console.log("plugin bundle load succ!");
             bundle.load<Prefab>("prefabs/PreLoginView", (err, prefab) => {
                 const ui_root = director.getScene().getChildByName("UIRoot");
                 let obj: Node = instantiate(prefab) as Node;

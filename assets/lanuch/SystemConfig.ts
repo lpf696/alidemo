@@ -11,6 +11,10 @@ export class SystemConfig {
     public static get DebugModel(): number {
         return this._data.config.debugModel;
     }
+
+    public static get FrameRate(): number {
+        return this._data.config.FrameRate;
+    }
 }
 
 

@@ -1,14 +1,20 @@
-import { _decorator, Component, Node } from 'cc';
-const { ccclass, property } = _decorator;
 
-@ccclass('SystemConfig')
-export class SystemConfig extends Component {
-    start() {
+export class SystemConfig {
 
+    private static _data: any = null;
+
+    public static init(config: any): void {
+        let data = config.json
+        this._data = Object.freeze(data);
     }
 
-    update(deltaTime: number) {
-        
+    public static get DebugModel(): number {
+        return this._data.config.debugModel;
+    }
+
+    public static get FrameRate(): number {
+        return this._data.config.FrameRate;
     }
 }
-
+
+
